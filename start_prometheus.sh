@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 NODE1_IP="$1"
 shift 1
