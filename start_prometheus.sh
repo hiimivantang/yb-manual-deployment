@@ -5,7 +5,6 @@ shift 1
 NODE2_IP="$1"
 shift 1
 NODE3_IP="$1"
-shift 1
 
 if [[ -z "$NODE1_IP" ]] | [[ -z "$NODE2_IP" ]] | [[ -z "$NODE3_IP" ]]; then
   echo "Usage $0 <node 1 ip address> <node 2 ip address> <node 3 ip address>"
