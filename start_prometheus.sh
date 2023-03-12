@@ -35,24 +35,24 @@ scrape_configs:
       - source_labels: ["__name__"]
         regex: "(.*)"
         target_label: "saved_name"
-        replacement: "$1"
+        replacement: "\$1"
       # The following basically retrofit the handler_latency_* metrics to label format.
       - source_labels: ["__name__"]
         regex: "handler_latency_(yb_[^_]*)_([^_]*)_([^_]*)(.*)"
         target_label: "server_type"
-        replacement: "$1"
+        replacement: "\$1"
       - source_labels: ["__name__"]
         regex: "handler_latency_(yb_[^_]*)_([^_]*)_([^_]*)(.*)"
         target_label: "service_type"
-        replacement: "$2"
+        replacement: "\$2"
       - source_labels: ["__name__"]
         regex: "handler_latency_(yb_[^_]*)_([^_]*)_([^_]*)(_sum|_count)?"
         target_label: "service_method"
-        replacement: "$3"
+        replacement: "\$3"
       - source_labels: ["__name__"]
         regex: "handler_latency_(yb_[^_]*)_([^_]*)_([^_]*)(_sum|_count)?"
         target_label: "__name__"
-        replacement: "rpc_latency$4"
+        replacement: "rpc_latency\$4"
 
     static_configs:
       - targets: ["$NODE1_IP:7000", "$NODE2_IP:7000", "$NODE3_IP:7000"]
