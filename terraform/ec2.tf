@@ -7,7 +7,7 @@ module "ec2_instance" {
   name = "instance-${each.key}"
 
   ami                    = "ami-0fd1ee6c8b656f020"
-  instance_type          = "t2.micro"
+  instance_type          = "m3.large"
   key_name               = "ec2"
   monitoring             = true
   vpc_security_group_ids = ["sg-023af329d09109929"]

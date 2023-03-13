@@ -18,7 +18,7 @@ wget https://downloads.yugabyte.com/releases/2.17.1.0/yugabyte-2.17.1.0-b439-lin
 tar xvfz yugabyte-2.17.1.0-b439-linux-x86_64.tar.gz && cd yugabyte-2.17.1.0/
 ./bin/post_install.sh
 
-mkdir $HOME/data
+mkdir /mnt/data
 mkdir -p /etc/yugabyte/master/conf
 mkdir -p /etc/yugabyte/tserver/conf
 
@@ -34,7 +34,7 @@ PRIVATE_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 tee /etc/yugabyte/master/conf/server.conf <<EOF
 --master_addresses=$NODE1_IP:7100,$NODE2_IP:7100,$NODE3_IP:7100
 --rpc_bind_addresses=$PRIVATE_IP
---fs_data_dirs=/home/ubuntu/data
+--fs_data_dirs=/mnt/data
 --placement_cloud=aws
 --placement_region=ap-southeast
 --placement_zone=ap-southeast-1a
@@ -77,7 +77,7 @@ tee /etc/yugabyte/tserver/conf/server.conf <<EOF
 --enable_ysql
 --pgsql_proxy_bind_address=$PRIVATE_IP:5433
 --cql_proxy_bind_address=$PRIVATE_IP:9042
---fs_data_dirs=/home/ubuntu/data
+--fs_data_dirs=/mnt/data
 --placement_cloud=aws
 --placement_region=ap-southeast
 --placement_zone=ap-southeast-1a
